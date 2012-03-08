@@ -25,17 +25,17 @@ class poll(tornado.web.RequestHandler):
         index = STORE.index
         startfrom = self.get_argument('startfrom', '0')
         startfrom = int(startfrom)
-        startfrom = max(startfrom, index-STORE.store.maxlen)
+        startfrom = max(startfrom, index-STORE.storemaxlen)
         startfrom = min(startfrom, index)
 
         
 
         result = dict(startfrom=startfrom, data=[])
-        start = STORE.store.maxlen - (index - startfrom)
+        start = STORE.storemaxlen - (index - startfrom)
 
         print startfrom, index
 
-        for i in xrange(start, STORE.store.maxlen):
+        for i in xrange(start, STORE.storemaxlen):
             status = STORE.store[i]
             print i, status
             result['data'].append(status)
@@ -67,7 +67,8 @@ class StoreManager(tweepy.StreamListener):
         print 'tweets found:', len(lines)
 
         self.index = 0
-        self.store = deque(maxlen=5)
+        store.storemaxlen = 5
+        self.store = deque(maxlen=store.storemaxlen)
         for line in lines:
             self.store.append(json.loads(line))
             self.index += 1
