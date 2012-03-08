@@ -67,8 +67,8 @@ class StoreManager(tweepy.StreamListener):
         print 'tweets found:', len(lines)
 
         self.index = 0
-        store.storemaxlen = 5
-        self.store = deque(maxlen=store.storemaxlen)
+        self.storemaxlen = 5
+        self.store = deque(maxlen=self.storemaxlen)
         for line in lines:
             self.store.append(json.loads(line))
             self.index += 1
