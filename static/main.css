@@ -1,0 +1,20 @@
+body { 
+	width:768px;
+	background-color:#aaa; 
+	margin:auto;
+	padding-top:20px;
+	font-family: sans-serif; 
+	font-size:20px;
+	text-shadow: #bbb 0px 1px;
+}
+
+input {font-size:20px;width:400px;}
+
+#chatter { padding-top:10px; }
+
+.tweet { 
+    border-bottom:1px solid gray; 
+    padding: 5px 10px 5px 10px;
+}
+.screen_name { font-size:12px; }
+.date { font-size:10px; color:gray;}
