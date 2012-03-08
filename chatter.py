@@ -156,7 +156,7 @@ if __name__ == "__main__":
 
     parser = OptionParser(add_help_option=False)
     parser.add_option("-h", "--host", dest="host", default='')
-    parser.add_option("-p", "--port", dest="port", default='10010')
+    parser.add_option("-p", "--port", dest="port", default='10011')
     (options, args) = parser.parse_args()
 
     HOST    = options.host
