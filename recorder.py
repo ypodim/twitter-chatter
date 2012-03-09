@@ -20,7 +20,7 @@ class StoreManager(tweepy.StreamListener):
     def __init__(self):
         tweepy.StreamListener.__init__(self)
         self.buffer = deque()
-        self.bsize = 3
+        self.bsize = 1
 
     def savebuffer(self):
         f = open('tweets.txt','a+')
