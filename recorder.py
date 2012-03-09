@@ -32,7 +32,7 @@ class StoreManager(tweepy.StreamListener):
         f.close()
 
     def on_status(self, status):
-        print status.text
+        print '%s: %s' % (status.author.screen_name, status.text)
         self.buffer.append(status)
         if len(self.buffer) > 10:
             self.savebuffer()
