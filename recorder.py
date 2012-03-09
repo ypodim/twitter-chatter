@@ -20,6 +20,7 @@ class StoreManager(tweepy.StreamListener):
     def __init__(self):
         tweepy.StreamListener.__init__(self)
         self.buffer = deque()
+        self.bsize = 3
 
     def savebuffer(self):
         f = open('tweets.txt','a+')
@@ -34,7 +35,7 @@ class StoreManager(tweepy.StreamListener):
     def on_status(self, status):
         print '%s: %s' % (status.author.screen_name, status.text)
         self.buffer.append(status)
-        if len(self.buffer) > 10:
+        if len(self.buffer) > self.bsize:
             self.savebuffer()
 
     def on_limit(self, track):
